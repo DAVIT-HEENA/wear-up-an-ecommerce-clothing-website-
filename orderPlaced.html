@@ -1,0 +1,89 @@
+<?php session_start(); ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> ORDER PLACED | E-COMMERCE WEBSITE BY EDYODA </title>
+    <!-- favicon -->
+    <link rel="icon" href="https://yt3.ggpht.com/a/AGF-l78km1YyNXmF0r3-0CycCA0HLA_i6zYn_8NZEg=s900-c-k-c0xffffffff-no-rj-mo" type="image/gif" sizes="16x16">
+    <!-- fontawesome -->
+    <script src="https://kit.fontawesome.com/4a3b1f73a2.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/orderPlaced.css">
+</head>
+<body>  
+    <?php include 'Header.php'; ?>
+    <?php include 'footer.html'; ?>
+    <!-- ORDER PLACED -->
+    <div id="orderContainer">
+        <div id="check"><i class="fas fa-check-circle"></i></div>
+        
+        <div id="aboutCheck">
+            <h1> Order Placed Successfully! </h1>
+            <p> We've sent you an email with the Order details. </p>
+            <div id="redirectBarContainer" style="
+                margin:24px auto 0 auto;
+                width:100%;
+                max-width:350px;
+                height:14px;
+                background:linear-gradient(90deg,#f0f0f0,#e0e0e0);
+                border-radius:7px;
+                overflow:hidden;
+                box-shadow:0 2px 8px rgba(76,175,80,0.12);
+            ">
+                <div id="redirectBar" style="
+                    height:100%;
+                    width:0;
+                    background:linear-gradient(90deg,#43e97b 0%,#38f9d7 100%);
+                    box-shadow:0 0 8px #43e97b77;
+                    transition:width 0.3s cubic-bezier(.4,2,.6,1);
+                    border-radius:7px;
+                "></div>
+            </div>
+            <p id="redirectText" style="
+                font-size:16px;
+                color:#388e3c;
+                margin-top:14px;
+                font-weight:600;
+                letter-spacing:0.5px;
+                transition:opacity 0.5s;
+                opacity:1;
+                text-align:center;
+            ">
+                Redirecting in <span id="redirectSeconds">3</span> seconds...
+            </p>
+        </div>
+    </div>
+    <script>
+        // Animate progress bar and countdown
+        var duration = 3.5; // seconds
+        var bar = document.getElementById('redirectBar');
+        var secondsSpan = document.getElementById('redirectSeconds');
+        var text = document.getElementById('redirectText');
+        var start = Date.now();
+        var interval = setInterval(function() {
+            var elapsed = (Date.now() - start) / 1000;
+            var percent = Math.min(elapsed / duration, 1);
+            bar.style.width = (percent * 100) + '%';
+            var secondsLeft = Math.ceil(duration - elapsed);
+            secondsSpan.textContent = secondsLeft > 0 ? secondsLeft : 0;
+            // Fade out text in last 0.5s
+            if (duration - elapsed < 0.5) {
+                text.style.opacity = (duration - elapsed) * 2;
+            }
+            if (percent >= 1) {
+                clearInterval(interval);
+            }
+        }, 100);
+        setTimeout(function() {
+            localStorage.removeItem('orderIds');
+            localStorage.removeItem('cartCount');
+            window.location.href = 'index.php';
+        }, duration * 1000);
+    </script>
+    <script src="orderPlaced.js"></script>
+</body>
+</html>

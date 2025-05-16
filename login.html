@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Wear-Up</title>
+    <link rel="stylesheet" href="css/login.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/4a3b1f73a2.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            font-family: 'Lato', sans-serif;
+            background: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+        .login-container {
+            max-width: 400px;
+            margin: 80px auto;
+            background-color: white;
+            padding: 40px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+        }
+        .login-container h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #333;
+        }
+        .login-container input[type="email"],
+        .login-container input[type="password"] {
+            width: 100%;
+            padding: 12px 15px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+        .login-container button {
+            width: 100%;
+            padding: 12px;
+            background-color: #222;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .login-container button:hover {
+            background-color: #444;
+        }
+        .login-container .link {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 14px;
+            color: #555; /* Light gray text color */
+        }
+
+        .login-container .link a {
+            text-decoration: none;
+            color: #007BFF; /* Link color */
+            font-weight: bold;
+        }
+
+        .login-container .link a:hover {
+            text-decoration: underline;
+            color: #0056b3; /* Darker blue on hover */
+        }
+
+        .icon {
+            margin-right: 8px;
+        }
+        
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <h2><i class="fas fa-user icon"></i>Login to Wear-Up</h2>
+        <form action="login.php" method="POST">
+            <input type="email" name="email" required>
+            <input type="password" name="password" required>
+            <input type="submit" value="Login">
+        </form>        
+        <div class="link">
+            <p>Don't have an account? <a href="register.html">Register here</a></p>
+        </div>
+    </div>
+
+</body>
+</html>
